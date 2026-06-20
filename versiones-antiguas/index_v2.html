@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InmoIA · Inmobiliaria en Madrid — Vende tu casa</title>
+  <meta name="description" content="Agencia inmobiliaria en Madrid. Vendemos tu vivienda con valoración por IA en 24 h, gratis. Salamanca, Chamberí, Chamartín, Pozuelo, La Moraleja y más." />
+  <meta name="theme-color" content="#0F2C4C" />
+  <link rel="icon" type="image/svg+xml" href="assets/logos/inmoia-logo-2.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --navy:#0F2C4C; --navy-soft:#1E3A56; --teal:#149AB4; --teal-d:#0E7E92; --teal-soft:#E2F4F8;
+      --bg:#FFFFFF; --bg2:#F5F8FA; --ink:#0F2C4C; --mute:#5B6B7B; --line:#E6EAEE;
+      --gold:#C9962B; --shadow:0 14px 40px rgba(15,44,76,.12); --shadow-sm:0 6px 18px rgba(15,44,76,.08);
+      --fd:"Sora",system-ui,sans-serif; --fb:"Inter",system-ui,sans-serif; --r:14px; --rl:20px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;overflow-x:clip;scroll-padding-top:80px}
+    body{font-family:var(--fb);color:var(--ink);background:var(--bg);line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,h4{font-family:var(--fd);font-weight:600;line-height:1.12;color:var(--navy)}
+    .wrap{width:100%;max-width:1180px;margin-inline:auto;padding-inline:clamp(1rem,4vw,2.2rem)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--fd);font-weight:600;
+      padding:.85rem 1.4rem;border-radius:10px;border:1.5px solid transparent;cursor:pointer;transition:.25s;font-size:1rem}
+    .btn-primary{background:var(--navy);color:#fff}
+    .btn-primary:hover{background:var(--navy-soft);transform:translateY(-2px)}
+    .btn-teal{background:var(--teal);color:#fff}
+    .btn-teal:hover{background:var(--teal-d);transform:translateY(-2px)}
+    .btn-wa{background:#25D366;color:#fff}
+    .btn-wa:hover{background:#1eae57;transform:translateY(-2px)}
+    .btn-ghost{background:#fff;border-color:var(--line);color:var(--navy)}
+    .btn-ghost:hover{border-color:var(--teal);color:var(--teal-d)}
+    .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:600;font-size:.8rem;
+      letter-spacing:.04em;color:var(--teal-d);background:var(--teal-soft);padding:.4rem .8rem;border-radius:999px}
+    .ico{flex:none}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:72px}
+    .brand img{height:38px}
+    .nav-links{display:flex;gap:1.5rem}
+    .nav-links a{font-family:var(--fd);font-weight:500;font-size:.95rem;color:var(--navy-soft)}
+    .nav-links a:hover{color:var(--teal-d)}
+    .nav-right{display:flex;align-items:center;gap:.8rem}
+    .nav-tel{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fd);font-weight:600;color:var(--navy)}
+    .burger{display:none;background:none;border:0;flex-direction:column;gap:5px;cursor:pointer;width:44px;height:44px;align-items:center;justify-content:center}
+    .burger span{width:24px;height:2px;background:var(--navy)}
+
+    /* Hero */
+    .hero{background:linear-gradient(180deg,#fff 0%,var(--bg2) 100%);padding:clamp(2.4rem,6vw,4.5rem) 0}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.6rem,4vw,3rem);align-items:center}
+    .hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:700;margin:.9rem 0}
+    .hero h1 em{font-style:normal;color:var(--teal-d)}
+    .hero p.sub{color:var(--mute);font-size:clamp(1rem,1.5vw,1.15rem);max-width:34rem}
+    /* Search bar */
+    .search{margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:.6rem;display:flex;gap:.5rem}
+    .search-field{display:flex;align-items:center;gap:.55rem;flex:1;padding:.4rem .7rem}
+    .search-field input{border:0;outline:none;font-family:var(--fb);font-size:1rem;width:100%;color:var(--ink);background:transparent}
+    .search .btn{white-space:nowrap}
+    .trust{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.3rem}
+    .trust span{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--fd);font-weight:500;font-size:.92rem;color:var(--navy)}
+    .trust .ico{color:var(--teal)}
+    /* Hero property card */
+    .pcard{background:#fff;border:1px solid var(--line);border-radius:var(--rl);overflow:hidden;box-shadow:var(--shadow)}
+    .pcard .ph{position:relative;aspect-ratio:4/3}
+    .pcard .ph img{width:100%;height:100%;object-fit:cover}
+    .badge{position:absolute;font-family:var(--fd);font-weight:600;font-size:.8rem;padding:.4rem .8rem;border-radius:999px}
+    .badge-tl{top:14px;left:14px;background:var(--teal);color:#fff}
+    .badge-tr{top:14px;right:14px;background:rgba(15,44,76,.92);color:#fff}
+    .pcard .pb{padding:1.1rem 1.2rem}
+    .pcard .price{font-family:var(--fd);font-weight:700;font-size:1.4rem;color:var(--navy)}
+    .pcard .loc{display:flex;align-items:center;gap:.4rem;color:var(--mute);font-size:.92rem;margin-top:.2rem}
+    .pcard .meta{display:flex;gap:1.1rem;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--line);color:var(--navy-soft);font-size:.9rem}
+    .pcard .meta span{display:inline-flex;align-items:center;gap:.4rem}
+
+    /* Stats */
+    .stats{background:var(--navy);color:#fff}
+    .stats .row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:2rem 0}
+    .stat{text-align:center;border-right:1px solid rgba(255,255,255,.15)}
+    .stat:last-child{border:0}
+    .stat b{display:block;font-family:var(--fd);font-weight:700;font-size:clamp(1.3rem,2.4vw,1.8rem)}
+    .stat small{color:rgba(255,255,255,.72);font-size:.85rem}
+
+    /* Sections */
+    section.blk{padding:clamp(3rem,7vw,5rem) 0}
+    .blk.alt{background:var(--bg2)}
+    .head{max-width:620px;margin-bottom:2rem}
+    .head h2{font-size:clamp(1.6rem,3.4vw,2.4rem)}
+    .head p{color:var(--mute);margin-top:.6rem}
+    /* Listings grid */
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+    .lcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm);transition:.3s}
+    .lcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .lcard .ph{position:relative;aspect-ratio:3/2}
+    .lcard .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
+    .lcard:hover .ph img{transform:scale(1.05)}
+    .lcard .pb{padding:1.1rem 1.2rem 1.3rem}
+    .lcard h3{font-size:1.25rem}
+    .lcard .price{color:var(--teal-d);font-family:var(--fd);font-weight:600;margin-top:.2rem}
+    .lcard .meta{display:flex;gap:1rem;flex-wrap:wrap;margin:.8rem 0 1rem;color:var(--mute);font-size:.88rem}
+    .lcard .meta span{display:inline-flex;align-items:center;gap:.35rem}
+    .note-line{font-size:.82rem;color:var(--mute);margin-top:1rem;font-style:italic}
+
+    /* Steps */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+    .step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.7rem 1.5rem;box-shadow:var(--shadow-sm)}
+    .step .n{width:46px;height:46px;border-radius:12px;background:var(--teal);color:#fff;display:grid;place-items:center;font-family:var(--fd);font-weight:700;margin-bottom:1rem}
+    .step h3{font-size:1.18rem;margin-bottom:.4rem}
+    .step p{color:var(--mute);font-size:.96rem}
+
+    /* Why split */
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3rem);align-items:center}
+    .split img{border-radius:var(--rl);box-shadow:var(--shadow);aspect-ratio:4/3;object-fit:cover;width:100%}
+    .flist{list-style:none;margin:1.2rem 0 1.6rem;display:flex;flex-direction:column;gap:.7rem}
+    .flist li{display:flex;gap:.6rem;align-items:center;font-family:var(--fd);font-weight:500;color:var(--navy-soft)}
+    .flist .ico{color:var(--teal);flex:none}
+
+    /* Testimonials */
+    .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+    .tcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;box-shadow:var(--shadow-sm)}
+    .stars{color:var(--gold);letter-spacing:.1em;margin-bottom:.7rem}
+    .tcard blockquote{color:var(--navy-soft);font-size:1.02rem}
+    .tcard cite{display:block;margin-top:.9rem;font-family:var(--fd);font-weight:600;font-style:normal;font-size:.9rem}
+
+    /* CTA */
+    .cta{background:var(--navy);color:#fff;text-align:center;padding:clamp(3rem,7vw,4.5rem) 0}
+    .cta h2{color:#fff;font-size:clamp(1.6rem,3.4vw,2.4rem)}
+    .cta p{color:rgba(255,255,255,.82);margin:.8rem auto 1.6rem;max-width:560px}
+    .cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+    /* Footer */
+    footer{background:#0A2138;color:rgba(255,255,255,.75);padding:2.6rem 0 1.4rem}
+    .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;padding-bottom:1.6rem;border-bottom:1px solid rgba(255,255,255,.12)}
+    footer h4{color:#fff;font-size:1rem;margin-bottom:.8rem}
+    footer p{font-size:.92rem;margin-bottom:.45rem}
+    footer a:hover{color:var(--teal)}
+    .fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem;padding-top:1.2rem;font-size:.84rem;color:rgba(255,255,255,.6)}
+    .flogo{height:38px;margin-bottom:.9rem}
+
+    /* WhatsApp float */
+    .wa{position:fixed;right:18px;bottom:18px;z-index:90;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 26px rgba(37,211,102,.45);transition:.25s}
+    .wa:hover{transform:scale(1.08)}
+    .vbanner{background:var(--teal-soft);color:var(--teal-d);text-align:center;font-size:.85rem;font-family:var(--fd);font-weight:500;padding:.5rem 1rem}
+
+    @media(max-width:900px){
+      .nav-links{display:none}.nav-tel{display:none}.burger{display:flex}
+      .nav.open .nav-links{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:1rem clamp(1rem,4vw,2.2rem);gap:.2rem;box-shadow:var(--shadow)}
+      .nav.open .nav-links a{padding:.7rem 0;border-bottom:1px solid var(--line)}
+      .hero-grid,.split{grid-template-columns:1fr}.hero-media{order:-1}
+      .grid3,.steps,.tgrid{grid-template-columns:1fr}
+      .stats .row{grid-template-columns:repeat(2,1fr);gap:1.2rem}.stat:nth-child(2){border:0}
+      .fgrid{grid-template-columns:1fr}
+    }
+    @media(max-width:520px){.search{flex-direction:column}.search .btn{width:100%}}
+  </style>
+</head>
+<body>
+  <div class="vbanner">🧪 Borrador v2 — versión alternativa con aspecto de inmobiliaria clásica</div>
+
+  <header>
+    <div class="wrap">
+      <div class="nav" id="nav">
+        <a class="brand" href="#top"><img src="assets/logos/inmoia-logo-1.svg" alt="InmoIA" /></a>
+        <nav class="nav-links">
+          <a href="#vender">Vender</a>
+          <a href="#zonas">Zonas</a>
+          <a href="#como">Cómo funciona</a>
+          <a href="#opiniones">Opiniones</a>
+        </nav>
+        <div class="nav-right">
+          <a class="nav-tel" href="tel:+34695128762">
+            <svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            695 12 87 62
+          </a>
+          <a class="btn btn-teal" href="#vender">Valoración gratis</a>
+          <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero" id="vender">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">
+            <svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+            Agencia inmobiliaria en Madrid
+          </span>
+          <h1>Vendemos tu vivienda en Madrid <em>al mejor precio</em>.</h1>
+          <p class="sub">Valoración con inteligencia artificial en 24 h y un agente que conoce tu zona. Gratis, sin compromiso, y solo cobramos si vendemos.</p>
+
+          <form class="search" id="valForm">
+            <div class="search-field">
+              <svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#149AB4" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <input type="text" id="addr" placeholder="Escribe la dirección de tu vivienda…" autocomplete="street-address" />
+            </div>
+            <button type="submit" class="btn btn-primary">Valorar gratis</button>
+          </form>
+
+          <div class="trust">
+            <span><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Valoración en 24 h</span>
+            <span><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> 0 € por adelantado</span>
+            <span><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Comisión solo si vendemos</span>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="pcard">
+            <div class="ph">
+              <img src="assets/img/interior.webp" alt="Vivienda en venta en Madrid" />
+              <span class="badge badge-tl">Valoración con IA</span>
+              <span class="badge badge-tr">Madrid</span>
+            </div>
+            <div class="pb">
+              <div class="price">¿Cuánto vale tu casa?</div>
+              <div class="loc">
+                <svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5B6B7B" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Zona prime y norte de Madrid
+              </div>
+              <div class="meta">
+                <span>🏠 Pisos · áticos · chalets</span>
+                <span>⏱️ Respuesta en 24 h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+      <div class="wrap row">
+        <div class="stat"><b>24 h</b><small>para tu valoración</small></div>
+        <div class="stat"><b>10</b><small>zonas de Madrid</small></div>
+        <div class="stat"><b>0 €</b><small>por adelantado</small></div>
+        <div class="stat"><b>Solo al vender</b><small>cobramos comisión</small></div>
+      </div>
+    </section>
+
+    <!-- ZONAS / "LISTINGS" -->
+    <section class="blk" id="zonas">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">Dónde vendemos</span>
+          <h2>Vendemos viviendas en tu zona de Madrid</h2>
+          <p>Conocemos cada calle, cada precio y cada comprador. Elige tu zona y te decimos cuánto vale tu casa.</p>
+        </div>
+        <div class="grid3">
+          <article class="lcard">
+            <div class="ph"><img src="assets/img/zona-salamanca.webp" alt="Viviendas en el Barrio de Salamanca" loading="lazy" /><span class="badge badge-tl">Prime</span></div>
+            <div class="pb">
+              <h3>Barrio de Salamanca</h3>
+              <div class="price">desde [dato] €/m²</div>
+              <div class="meta"><span>🏛️ Pisos y áticos</span><span>📍 Madrid</span></div>
+              <a class="btn btn-ghost" href="#vender">Valorar mi casa aquí</a>
+            </div>
+          </article>
+          <article class="lcard">
+            <div class="ph"><img src="assets/img/zona-chamberi.webp" alt="Viviendas en Chamberí" loading="lazy" /><span class="badge badge-tl">Alta demanda</span></div>
+            <div class="pb">
+              <h3>Chamberí</h3>
+              <div class="price">desde [dato] €/m²</div>
+              <div class="meta"><span>🏢 Clásico reformado</span><span>📍 Madrid</span></div>
+              <a class="btn btn-ghost" href="#vender">Valorar mi casa aquí</a>
+            </div>
+          </article>
+          <article class="lcard">
+            <div class="ph"><img src="assets/img/zona-chamartin.webp" alt="Viviendas en Chamartín" loading="lazy" /><span class="badge badge-tl">Familiar</span></div>
+            <div class="pb">
+              <h3>Chamartín</h3>
+              <div class="price">desde [dato] €/m²</div>
+              <div class="meta"><span>🏠 Pisos y chalets</span><span>📍 Madrid</span></div>
+              <a class="btn btn-ghost" href="#vender">Valorar mi casa aquí</a>
+            </div>
+          </article>
+        </div>
+        <p class="note-line">También en Hortaleza, Fuencarral, Moncloa, Pozuelo, La Moraleja, Alcobendas y San Sebastián de los Reyes. (Precios €/m²: completar con datos reales de Idealista.)</p>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="blk alt" id="como">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">El proceso</span>
+          <h2>Vender tu casa, en 3 pasos</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="n">1</div><h3>Valoramos tu casa</h3><p>Con IA y datos reales de tu zona, en 24 h y gratis. Luego la afinamos con una visita.</p></div>
+          <div class="step"><div class="n">2</div><h3>La preparamos y publicamos</h3><p>Fotografía profesional, anuncio que destaca y publicación en los principales portales.</p></div>
+          <div class="step"><div class="n">3</div><h3>Vendemos y cobras</h3><p>Filtramos compradores y te acompañamos hasta la firma. Solo cobramos si vendes.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POR QUÉ -->
+    <section class="blk">
+      <div class="wrap split">
+        <img src="assets/img/hero.webp" alt="Edificio en Madrid" loading="lazy" />
+        <div>
+          <span class="eyebrow">Por qué InmoIA</span>
+          <h2>Datos que no fallan, trato que sí entiende tu casa</h2>
+          <p style="color:var(--mute);margin-top:.8rem">La inteligencia artificial pone el precio justo desde el primer día; el agente local aporta lo que ningún algoritmo ve.</p>
+          <ul class="flist">
+            <li><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Valoración con IA en 24 h</li>
+            <li><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Fotografía y anuncios profesionales</li>
+            <li><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Publicación en los principales portales</li>
+            <li><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Filtrado de compradores reales</li>
+            <li><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Acompañamiento legal hasta la firma</li>
+          </ul>
+          <a class="btn btn-primary" href="#vender">Quiero mi valoración</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPINIONES -->
+    <section class="blk alt" id="opiniones">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">Opiniones</span>
+          <h2>Propietarios que ya han vendido con nosotros</h2>
+          <p class="note-line">Ejemplos de muestra — se sustituyen por testimonios reales.</p>
+        </div>
+        <div class="tgrid">
+          <figure class="tcard"><div class="stars">★★★★★</div><blockquote>«Precio realista desde el día uno. Vendí en cinco semanas, sin sustos.»</blockquote><cite>Marta R. · Chamberí</cite></figure>
+          <figure class="tcard"><div class="stars">★★★★★</div><blockquote>«La valoración con IA cuadró con lo que pagué. Trato cercano y claro.»</blockquote><cite>Javier L. · Salamanca</cite></figure>
+          <figure class="tcard"><div class="stars">★★★★★</div><blockquote>«Solo cobran si venden, así que iban a por todas. Muy recomendables.»</blockquote><cite>Carmen y Luis · Chamartín</cite></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="wrap">
+        <h2>¿Vendes tu casa? Empieza por saber cuánto vale</h2>
+        <p>En menos de 24 h sabrás el precio real de tu vivienda en Madrid. Gratis y sin compromiso.</p>
+        <div class="cta-actions">
+          <a class="btn btn-teal" href="#vender">Pedir valoración gratis</a>
+          <a class="btn btn-wa" id="waCta" href="#" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="fgrid">
+        <div>
+          <img class="flogo" src="assets/logos/inmoia-logo-white.svg" alt="InmoIA" />
+          <p>Agencia inmobiliaria digital en Madrid. Vendemos tu casa con inteligencia artificial y trato cercano.</p>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <p><a id="waFoot" href="#" target="_blank" rel="noopener">WhatsApp · 695 12 87 62</a></p>
+          <p><a href="mailto:davidwp37@gmail.com">davidwp37@gmail.com</a></p>
+          <p>Madrid · zona prime y norte</p>
+        </div>
+        <div>
+          <h4>Enlaces</h4>
+          <p><a href="#zonas">Zonas</a></p>
+          <p><a href="#como">Cómo funciona</a></p>
+          <p><a href="#vender">Valoración gratis</a></p>
+        </div>
+      </div>
+      <div class="fbot">
+        <p>© <span id="yr">2026</span> InmoIA · Madrid</p>
+        <p>Borrador v2 · diseño alternativo</p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18.8 5 16.9 5 15 5 9 9.9 4.1 16 4.1S27 9 27 15 22.1 24.8 16 24.8z"/></svg>
+  </a>
+
+  <script>
+    (function(){
+      var PHONE="34695128762";
+      var BASE="Hola InmoIA 👋 Quiero una valoración gratuita de mi vivienda.";
+      function wa(t){return "https://wa.me/"+PHONE+"?text="+encodeURIComponent(t||BASE);}
+      ["waCta","waFoot","waFloat"].forEach(function(id){var el=document.getElementById(id);if(el)el.href=wa();});
+      var nav=document.getElementById("nav"), burger=document.getElementById("burger");
+      if(burger)burger.addEventListener("click",function(){nav.classList.toggle("open");});
+      nav.querySelectorAll(".nav-links a").forEach(function(a){a.addEventListener("click",function(){nav.classList.remove("open");});});
+      var form=document.getElementById("valForm");
+      if(form)form.addEventListener("submit",function(e){
+        e.preventDefault();
+        var addr=document.getElementById("addr").value.trim();
+        window.open(wa(BASE+(addr?(" Dirección: "+addr):"")),"_blank");
+      });
+      var yr=document.getElementById("yr"); if(yr)yr.textContent=new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

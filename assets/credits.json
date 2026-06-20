@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "src": "assets/img/hero.jpg",
+    "title": "A Black and white photograph of building at Gran Via, Madrid Spain 033",
+    "creator": "David Adam Kess",
+    "creator_url": "https://commons.wikimedia.org/wiki/User:David_Adam_Kess",
+    "license": "by-sa",
+    "license_version": "4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "foreign_landing_url": "https://commons.wikimedia.org/w/index.php?curid=34564997",
+    "source": "wikimedia"
+  },
+  "zona-salamanca": {
+    "src": "assets/img/zona-salamanca.jpg",
+    "title": "España / Edificio Beatriz. 3août08madrid022 Cll. Ortega y Gasset y Velázquez en barrio La Castellana, Distrito Salamanca MADRID. Adoro este ",
+    "creator": "http://www.ipernity.com/home/293885 NOW AHORA",
+    "creator_url": "https://www.flickr.com/photos/28815374@N05",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/28815374@N05/2731804364",
+    "source": "flickr"
+  },
+  "zona-chamberi": {
+    "src": "assets/img/zona-chamberi.jpg",
+    "title": "facade building Madrid has classical",
+    "creator": "Unknown",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://www.rawpixel.com/image/3305597/free-photo-image-white-png-church",
+    "source": "rawpixel"
+  },
+  "zona-chamartin": {
+    "src": "assets/img/zona-chamartin.jpg",
+    "title": "Madrid Skyline (11 sep. 2013)",
+    "creator": "Loqueveo",
+    "creator_url": "https://commons.wikimedia.org/w/index.php?title=User:Loqueveo&action=edit&redlink=1",
+    "license": "by-sa",
+    "license_version": "3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "foreign_landing_url": "https://commons.wikimedia.org/w/index.php?curid=28367955",
+    "source": "wikimedia"
+  },
+  "interior": {
+    "src": "assets/img/interior.jpg",
+    "title": "Big And Comfortable Living Room",
+    "creator": "Unknown",
+    "creator_url": null,
+    "license": "cc0",
+    "license_version": "1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://www.rawpixel.com/image/5965031/photo-image-light-public-domain-plant",
+    "source": "rawpixel"
+  }
+}

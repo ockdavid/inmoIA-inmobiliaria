@@ -1,0 +1,7 @@
+# Archivos de desarrollo / no necesarios en producción
+tools/
+assets/photos/source/
+
+# Sistema
+.DS_Store
+Thumbs.db

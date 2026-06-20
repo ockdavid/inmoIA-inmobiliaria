@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 372 100" role="img" aria-label="InmoIA">
+  <title>InmoIA — logo casita (carbón + dorado, texto oscuro)</title>
+  <g transform="translate(2,4) scale(0.7667)">
+    <rect width="120" height="120" rx="28" fill="#1C1A17"/>
+    <path d="M34 62 L60 36 L86 62" fill="none" stroke="#B0894F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M40 60 L40 86 Q40 90 44 90 L76 90 Q80 90 80 86 L80 60" fill="none" stroke="#F3ECDD" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="60" cy="36" r="6" fill="#F3ECDD"/>
+  </g>
+  <text x="108" y="65" font-family="'Poppins','Segoe UI',Arial,sans-serif" font-size="44" font-weight="700">
+    <tspan fill="#1C1A17">Inmo</tspan><tspan fill="#B0894F">IA</tspan>
+  </text>
+</svg>

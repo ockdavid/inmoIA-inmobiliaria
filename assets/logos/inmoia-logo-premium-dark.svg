@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 100" role="img" aria-label="InmoIA">
+  <title>InmoIA — premium (carbón + dorado)</title>
+  <path d="M24 52 L56 20 L88 52 L88 84 Q88 88 84 88 L28 88 Q24 88 24 84 Z" fill="#1C1A17"/>
+  <circle cx="56" cy="20" r="7" fill="#B0894F"/>
+  <circle cx="56" cy="20" r="3" fill="#1C1A17"/>
+  <text x="108" y="65" font-family="'Poppins','Segoe UI',Arial,sans-serif" font-size="44" font-weight="700">
+    <tspan fill="#1C1A17">Inmo</tspan><tspan fill="#B0894F">IA</tspan>
+  </text>
+</svg>
