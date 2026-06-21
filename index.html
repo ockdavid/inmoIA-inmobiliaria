@@ -12,6 +12,8 @@
   <meta property="og:title" content="InmoIA · Vende tu casa en Madrid con valoración por IA en 24 h" />
   <meta property="og:description" content="Valoración de tu vivienda con inteligencia artificial en 24 h, gratis. Zona prime de Madrid: Salamanca, Chamberí, Chamartín." />
   <meta property="og:locale" content="es_ES" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="zh_CN" />
   <meta property="og:image" content="assets/img/hero-interior.webp" />
 
   <link rel="icon" type="image/svg+xml" href="assets/logos/inmoia-logo-2.svg" />
@@ -21,7 +23,7 @@
 
   <link rel="preload" as="image" href="assets/img/hero-interior.webp?v=2" fetchpriority="high" />
   <link rel="stylesheet" href="styles_v4.css?v=20260617" />
-  <link rel="stylesheet" href="styles_v5.css?v=20260620b" />
+  <link rel="stylesheet" href="styles_v5.css?v=20260621" />
 
   <script type="application/ld+json">
   {
@@ -33,12 +35,12 @@
     "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressRegion": "Madrid", "addressCountry": "ES" },
     "url": "https://www.inmoia.pro/",
     "priceRange": "Comisión solo al vender",
-    "knowsLanguage": "es"
+    "knowsLanguage": ["es", "en", "zh"]
   }
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#valoracion">Saltar al formulario de valoración</a>
+  <a class="skip-link" href="#valoracion" data-i18n="skip">Saltar al formulario de valoración</a>
 
   <header class="site-header" data-header>
     <div class="container header-inner">
@@ -48,18 +50,24 @@
       </a>
 
       <nav class="nav" data-nav aria-label="Navegación principal">
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#por-que">Por qué InmoIA</a>
-        <a href="#zonas">Zonas</a>
-        <a href="#opiniones">Opiniones</a>
-        <a href="#faq">Preguntas</a>
+        <a href="#como-funciona" data-i18n="nav_como">Cómo funciona</a>
+        <a href="#por-que" data-i18n="nav_porque">Por qué InmoIA</a>
+        <a href="#zonas" data-i18n="nav_zonas">Zonas</a>
+        <a href="#opiniones" data-i18n="nav_opiniones">Opiniones</a>
+        <a href="#faq" data-i18n="nav_faq">Preguntas</a>
       </nav>
 
-      <a class="btn btn-primary header-cta" href="#valoracion">Valoración gratis</a>
-
-      <button class="nav-toggle" data-nav-toggle aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="header-right">
+        <div class="lang-switch" role="group" aria-label="Idioma / Language">
+          <button type="button" class="lang-btn is-active" data-lang="es" aria-label="Español"><img src="assets/flags/es.svg" alt="ES" width="22" height="15" /></button>
+          <button type="button" class="lang-btn" data-lang="en" aria-label="English"><img src="assets/flags/en.svg" alt="EN" width="22" height="15" /></button>
+          <button type="button" class="lang-btn" data-lang="zh" aria-label="中文"><img src="assets/flags/zh.svg" alt="ZH" width="22" height="15" /></button>
+        </div>
+        <a class="btn btn-primary header-cta" href="#valoracion" data-i18n="cta_header">Valoración gratis</a>
+        <button class="nav-toggle" data-nav-toggle aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -75,50 +83,50 @@
 
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow eyebrow--light">Inmobiliaria digital · Madrid zona prime</p>
-          <h1 class="hero-title">Vendemos tu vivienda en Madrid al <em>mejor precio</em>.</h1>
-          <p class="hero-sub">Valoración con inteligencia artificial en 24 h y un agente que conoce tu zona. Gratis, sin compromiso, y solo cobramos si vendemos.</p>
+          <p class="eyebrow eyebrow--light" data-i18n="hero_eyebrow">Inmobiliaria digital · Madrid zona prime</p>
+          <h1 class="hero-title" data-i18n="hero_title">Vendemos tu vivienda en Madrid al <em>mejor precio</em>.</h1>
+          <p class="hero-sub" data-i18n="hero_sub">Valoración con inteligencia artificial en 24 h y un agente que conoce tu zona. Gratis, sin compromiso, y solo cobramos si vendemos.</p>
           <ul class="hero-points">
-            <li><span class="tick" aria-hidden="true">✓</span> Valoración con IA en 24 h</li>
-            <li><span class="tick" aria-hidden="true">✓</span> 0 € por adelantado</li>
-            <li><span class="tick" aria-hidden="true">✓</span> Comisión solo si vendemos</li>
+            <li><span class="tick" aria-hidden="true">✓</span> <span data-i18n="hero_p1">Valoración con IA en 24 h</span></li>
+            <li><span class="tick" aria-hidden="true">✓</span> <span data-i18n="hero_p2">0 € por adelantado</span></li>
+            <li><span class="tick" aria-hidden="true">✓</span> <span data-i18n="hero_p3">Comisión solo si vendemos</span></li>
           </ul>
         </div>
 
         <!-- FORM CARD -->
         <div class="form-card" id="valoracion">
-          <h2 class="form-title">¿Cuánto vale tu casa? Hoy lo sabes.</h2>
+          <h2 class="form-title" data-i18n="form_title">¿Cuánto vale tu casa? Hoy lo sabes.</h2>
           <form class="lead-form" data-lead-form action="https://api.web3forms.com/submit" method="POST" novalidate>
             <input type="hidden" name="access_key" value="78cc6c0b-3f62-4af2-9c9b-87c10407bdb9" />
             <input type="hidden" name="subject" value="Nueva solicitud de valoración · InmoIA" />
             <input type="hidden" name="from_name" value="Web de InmoIA" />
             <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <label>
-              <span>Nombre</span>
-              <input type="text" name="nombre" autocomplete="name" required placeholder="Tu nombre" />
+              <span data-i18n="f_nombre">Nombre</span>
+              <input type="text" name="nombre" autocomplete="name" required placeholder="Tu nombre" data-i18n-ph="ph_nombre" />
             </label>
             <label>
-              <span>Teléfono</span>
+              <span data-i18n="f_telefono">Teléfono</span>
               <input type="tel" name="telefono" autocomplete="tel" required placeholder="600 000 000" />
             </label>
             <label>
-              <span>Email <span class="opt">(opcional)</span></span>
-              <input type="email" name="email" autocomplete="email" placeholder="tucorreo@email.com" />
+              <span><span data-i18n="f_email">Email</span> <span class="opt" data-i18n="f_opcional">(opcional)</span></span>
+              <input type="email" name="email" autocomplete="email" placeholder="tucorreo@email.com" data-i18n-ph="ph_email" />
             </label>
             <label>
-              <span>Zona o dirección de la vivienda</span>
-              <input type="text" name="zona" required placeholder="Ej. calle Velázquez, Salamanca" />
+              <span data-i18n="f_zona">Zona o dirección de la vivienda</span>
+              <input type="text" name="zona" required placeholder="Ej. calle Velázquez, Salamanca" data-i18n-ph="ph_zona" />
             </label>
             <label class="check">
               <input type="checkbox" name="privacidad" required />
-              <span>He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span>
+              <span data-i18n="check">He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span>
             </label>
-            <button type="submit" class="btn btn-primary btn-block">Pedir valoración gratis</button>
+            <button type="submit" class="btn btn-primary btn-block" data-i18n="btn_pedir">Pedir valoración gratis</button>
             <a class="btn btn-whatsapp btn-block" data-wa-link href="#" rel="noopener">
-              <svg class="wa-ico" viewBox="0 0 32 32" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18.8 5 16.9 5 15 5 9 9.9 4.1 16 4.1S27 9 27 15 22.1 24.8 16 24.8zm6-7.6c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg> Prefiero hablar por WhatsApp
+              <svg class="wa-ico" viewBox="0 0 32 32" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18.8 5 16.9 5 15 5 9 9.9 4.1 16 4.1S27 9 27 15 22.1 24.8 16 24.8zm6-7.6c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg> <span data-i18n="btn_whatsapp">Prefiero hablar por WhatsApp</span>
             </a>
-            <p class="form-foot">Gratis y sin compromiso · Respondemos en menos de 24 h.</p>
-            <p class="form-success" data-form-success hidden>¡Gracias! Te contactamos enseguida. Si quieres acelerar, escríbenos por WhatsApp.</p>
+            <p class="form-foot" data-i18n="form_foot">Gratis y sin compromiso · Respondemos en menos de 24 h.</p>
+            <p class="form-success" data-form-success hidden data-i18n="form_success">¡Gracias! Te contactamos enseguida. Si quieres acelerar, escríbenos por WhatsApp.</p>
           </form>
         </div>
       </div>
@@ -127,33 +135,33 @@
     <!-- STATS BAND -->
     <section class="stats" aria-label="Garantías">
       <div class="container stats-row">
-        <div class="stat reveal"><strong>24 h</strong><span>para tu valoración</span></div>
-        <div class="stat reveal"><strong>0 €</strong><span>por adelantado</span></div>
-        <div class="stat reveal"><strong>Solo al vender</strong><span>cobramos comisión</span></div>
-        <div class="stat reveal"><strong>Agente local</strong><span>de tu propio barrio</span></div>
+        <div class="stat reveal"><strong>24 h</strong><span data-i18n="stat1_t">para tu valoración</span></div>
+        <div class="stat reveal"><strong>0 €</strong><span data-i18n="stat2_t">por adelantado</span></div>
+        <div class="stat reveal"><strong data-i18n="stat3_n">Solo al vender</strong><span data-i18n="stat3_t">cobramos comisión</span></div>
+        <div class="stat reveal"><strong data-i18n="stat4_n">Agente local</strong><span data-i18n="stat4_t">de tu propio barrio</span></div>
       </div>
     </section>
 
     <!-- CÓMO FUNCIONA -->
     <section class="section" id="como-funciona">
       <div class="container">
-        <p class="eyebrow">El proceso</p>
-        <h2 class="section-title reveal">Vender tu casa, en tres pasos sencillos.</h2>
+        <p class="eyebrow" data-i18n="proc_eyebrow">El proceso</p>
+        <h2 class="section-title reveal" data-i18n="proc_title">Vender tu casa, en tres pasos sencillos.</h2>
         <div class="steps">
           <article class="step reveal">
             <span class="step-num">01</span>
-            <h3>Pides tu valoración</h3>
-            <p>Rellena tres datos. Nuestra IA cruza miles de operaciones reales de tu zona para estimar el precio de tu vivienda.</p>
+            <h3 data-i18n="step1_h">Pides tu valoración</h3>
+            <p data-i18n="step1_p">Rellena tres datos. Nuestra IA cruza miles de operaciones reales de tu zona para estimar el precio de tu vivienda.</p>
           </article>
           <article class="step reveal">
             <span class="step-num">02</span>
-            <h3>Afinamos en persona</h3>
-            <p>Un agente local visita la vivienda, ajusta el precio al detalle y diseña contigo el plan de venta.</p>
+            <h3 data-i18n="step2_h">Afinamos en persona</h3>
+            <p data-i18n="step2_p">Un agente local visita la vivienda, ajusta el precio al detalle y diseña contigo el plan de venta.</p>
           </article>
           <article class="step reveal">
             <span class="step-num">03</span>
-            <h3>Vendemos y cobras</h3>
-            <p>Publicamos, filtramos compradores y te acompañamos hasta la firma. Solo cobramos si vendes.</p>
+            <h3 data-i18n="step3_h">Vendemos y cobras</h3>
+            <p data-i18n="step3_p">Publicamos, filtramos compradores y te acompañamos hasta la firma. Solo cobramos si vendes.</p>
           </article>
         </div>
       </div>
@@ -166,17 +174,17 @@
           <img src="assets/img/interior.webp" alt="Salón amplio y luminoso de una vivienda" loading="lazy" decoding="async" />
         </div>
         <div class="split-copy">
-          <p class="eyebrow">Por qué InmoIA</p>
-          <h2 class="section-title reveal">Datos que no se equivocan, criterio que sí entiende tu casa.</h2>
-          <p class="reveal">La inteligencia artificial pone el precio justo desde el primer día: ni tan alto que tu casa se quede meses sin venderse, ni tan bajo que pierdas dinero. El agente local aporta lo que ningún algoritmo ve: el estado real, la luz, las vistas, el barrio.</p>
+          <p class="eyebrow" data-i18n="why_eyebrow">Por qué InmoIA</p>
+          <h2 class="section-title reveal" data-i18n="why_title">Datos que no se equivocan, criterio que sí entiende tu casa.</h2>
+          <p class="reveal" data-i18n="why_p">La inteligencia artificial pone el precio justo desde el primer día: ni tan alto que tu casa se quede meses sin venderse, ni tan bajo que pierdas dinero. El agente local aporta lo que ningún algoritmo ve: el estado real, la luz, las vistas, el barrio.</p>
           <ul class="feature-list">
-            <li class="reveal"><span class="tick" aria-hidden="true">✓</span> Valoración con inteligencia artificial en 24 h</li>
-            <li class="reveal"><span class="tick" aria-hidden="true">✓</span> Fotografía y anuncios profesionales</li>
-            <li class="reveal"><span class="tick" aria-hidden="true">✓</span> Publicación en los principales portales</li>
-            <li class="reveal"><span class="tick" aria-hidden="true">✓</span> Filtrado de compradores reales</li>
-            <li class="reveal"><span class="tick" aria-hidden="true">✓</span> Acompañamiento legal hasta la firma</li>
+            <li class="reveal"><span class="tick" aria-hidden="true">✓</span> <span data-i18n="why_f1">Valoración con inteligencia artificial en 24 h</span></li>
+            <li class="reveal"><span class="tick" aria-hidden="true">✓</span> <span data-i18n="why_f2">Fotografía y anuncios profesionales</span></li>
+            <li class="reveal"><span class="tick" aria-hidden="true">✓</span> <span data-i18n="why_f3">Publicación en los principales portales</span></li>
+            <li class="reveal"><span class="tick" aria-hidden="true">✓</span> <span data-i18n="why_f4">Filtrado de compradores reales</span></li>
+            <li class="reveal"><span class="tick" aria-hidden="true">✓</span> <span data-i18n="why_f5">Acompañamiento legal hasta la firma</span></li>
           </ul>
-          <a class="btn btn-primary" href="#valoracion">Quiero mi valoración</a>
+          <a class="btn btn-primary" href="#valoracion" data-i18n="why_btn">Quiero mi valoración</a>
         </div>
       </div>
     </section>
@@ -184,35 +192,35 @@
     <!-- ZONAS -->
     <section class="section" id="zonas">
       <div class="container">
-        <p class="eyebrow">Dónde trabajamos</p>
-        <h2 class="section-title reveal">Especialistas en la zona prime de Madrid.</h2>
-        <p class="section-lead reveal">Conocemos cada calle, cada precio y cada tipo de comprador. Esa cercanía es la que vende tu casa antes y mejor.</p>
+        <p class="eyebrow" data-i18n="zonas_eyebrow">Dónde trabajamos</p>
+        <h2 class="section-title reveal" data-i18n="zonas_title">Especialistas en la zona prime de Madrid.</h2>
+        <p class="section-lead reveal" data-i18n="zonas_lead">Conocemos cada calle, cada precio y cada tipo de comprador. Esa cercanía es la que vende tu casa antes y mejor.</p>
         <div class="zonas-grid">
           <article class="zona-card reveal">
             <img src="assets/img/zona-salamanca.webp" alt="Edificio señorial en el barrio de Salamanca, Madrid" loading="lazy" decoding="async" />
             <div class="zona-body">
               <h3>Salamanca</h3>
-              <p>El lujo clásico de Madrid: alturas, fachadas señoriales y compradores exigentes.</p>
+              <p data-i18n="zona1_p">El lujo clásico de Madrid: alturas, fachadas señoriales y compradores exigentes.</p>
             </div>
           </article>
           <article class="zona-card reveal">
             <img src="assets/img/zona-chamberi.webp" alt="Fachada clásica con balcones en Chamberí, Madrid" loading="lazy" decoding="async" />
             <div class="zona-body">
               <h3>Chamberí</h3>
-              <p>Edificios con historia y mucha demanda. Un barrio que no para de revalorizarse.</p>
+              <p data-i18n="zona2_p">Edificios con historia y mucha demanda. Un barrio que no para de revalorizarse.</p>
             </div>
           </article>
           <article class="zona-card reveal">
             <img src="assets/img/zona-chamartin.webp" alt="Avenida y torres modernas en Chamartín, Madrid" loading="lazy" decoding="async" />
             <div class="zona-body">
               <h3>Chamartín</h3>
-              <p>Lo residencial y lo moderno se dan la mano. Familias y profesionales que buscan calidad.</p>
+              <p data-i18n="zona3_p">Lo residencial y lo moderno se dan la mano. Familias y profesionales que buscan calidad.</p>
             </div>
           </article>
         </div>
 
         <div class="zonas-extra reveal">
-          <span class="zonas-extra-label">También trabajamos en:</span>
+          <span class="zonas-extra-label" data-i18n="zonas_extra">También trabajamos en:</span>
           <ul class="chips">
             <li>Hortaleza</li>
             <li>Fuencarral</li>
@@ -229,24 +237,24 @@
     <!-- OPINIONES -->
     <section class="section section--alt" id="opiniones">
       <div class="container">
-        <p class="eyebrow">Opiniones</p>
-        <h2 class="section-title reveal">Propietarios que ya han vendido con nosotros.</h2>
-        <p class="placeholder-note reveal">Ejemplos de muestra — sustitúyelos por testimonios reales a medida que cierres ventas.</p>
+        <p class="eyebrow" data-i18n="op_eyebrow">Opiniones</p>
+        <h2 class="section-title reveal" data-i18n="op_title">Propietarios que ya han vendido con nosotros.</h2>
+        <p class="placeholder-note reveal" data-i18n="op_note">Ejemplos de muestra — sustitúyelos por testimonios reales a medida que cierres ventas.</p>
         <div class="testi-grid">
           <figure class="testi reveal">
             <div class="stars" aria-label="5 sobre 5">★★★★★</div>
-            <blockquote>«Me dieron un precio realista desde el primer día y la casa se vendió en cinco semanas. Cero sustos.»</blockquote>
-            <figcaption>Marta R. · Vendió en Chamberí</figcaption>
+            <blockquote data-i18n="testi1_q">«Me dieron un precio realista desde el primer día y la casa se vendió en cinco semanas. Cero sustos.»</blockquote>
+            <figcaption data-i18n="testi1_c">Marta R. · Vendió en Chamberí</figcaption>
           </figure>
           <figure class="testi reveal">
             <div class="stars" aria-label="5 sobre 5">★★★★★</div>
-            <blockquote>«La valoración con IA me cuadró con lo que pagué después. Trato cercano y todo muy claro.»</blockquote>
-            <figcaption>Javier L. · Vendió en Salamanca</figcaption>
+            <blockquote data-i18n="testi2_q">«La valoración con IA me cuadró con lo que pagué después. Trato cercano y todo muy claro.»</blockquote>
+            <figcaption data-i18n="testi2_c">Javier L. · Vendió en Salamanca</figcaption>
           </figure>
           <figure class="testi reveal">
             <div class="stars" aria-label="5 sobre 5">★★★★★</div>
-            <blockquote>«Solo cobran si venden, así que iban a por todas. Lo recomiendo a cualquier vecino del barrio.»</blockquote>
-            <figcaption>Carmen y Luis · Vendieron en Chamartín</figcaption>
+            <blockquote data-i18n="testi3_q">«Solo cobran si venden, así que iban a por todas. Lo recomiendo a cualquier vecino del barrio.»</blockquote>
+            <figcaption data-i18n="testi3_c">Carmen y Luis · Vendieron en Chamartín</figcaption>
           </figure>
         </div>
       </div>
@@ -255,28 +263,28 @@
     <!-- FAQ -->
     <section class="section" id="faq">
       <div class="container faq-wrap">
-        <p class="eyebrow">Preguntas frecuentes</p>
-        <h2 class="section-title reveal">Lo que todo propietario quiere saber.</h2>
+        <p class="eyebrow" data-i18n="faq_eyebrow">Preguntas frecuentes</p>
+        <h2 class="section-title reveal" data-i18n="faq_title">Lo que todo propietario quiere saber.</h2>
         <div class="faq">
           <details>
-            <summary>¿Cuánto cuesta la valoración?</summary>
-            <p>Nada. Es totalmente gratuita y sin ningún compromiso. Te damos una primera estimación con IA en 24 h y, si quieres, la afinamos con una visita.</p>
+            <summary data-i18n="faq1_q">¿Cuánto cuesta la valoración?</summary>
+            <p data-i18n="faq1_a">Nada. Es totalmente gratuita y sin ningún compromiso. Te damos una primera estimación con IA en 24 h y, si quieres, la afinamos con una visita.</p>
           </details>
           <details>
-            <summary>¿Cuándo y cuánto cobráis?</summary>
-            <p>Solo cobramos si vendemos tu vivienda: una comisión sobre el precio final de venta. Cero euros por adelantado y cero riesgo para ti.</p>
+            <summary data-i18n="faq2_q">¿Cuándo y cuánto cobráis?</summary>
+            <p data-i18n="faq2_a">Solo cobramos si vendemos tu vivienda: una comisión sobre el precio final de venta. Cero euros por adelantado y cero riesgo para ti.</p>
           </details>
           <details>
-            <summary>¿Qué es exactamente la «valoración con IA»?</summary>
-            <p>Un modelo que analiza operaciones reales y las características de tu vivienda para estimar su precio de mercado. Después, un agente local lo ajusta en persona.</p>
+            <summary data-i18n="faq3_q">¿Qué es exactamente la «valoración con IA»?</summary>
+            <p data-i18n="faq3_a">Un modelo que analiza operaciones reales y las características de tu vivienda para estimar su precio de mercado. Después, un agente local lo ajusta en persona.</p>
           </details>
           <details>
-            <summary>¿En qué zonas trabajáis?</summary>
-            <p>En la zona prime de Madrid: Salamanca, Chamberí y Chamartín, además de sus alrededores. Si tu vivienda está cerca, escríbenos igualmente.</p>
+            <summary data-i18n="faq4_q">¿En qué zonas trabajáis?</summary>
+            <p data-i18n="faq4_a">En la zona prime de Madrid: Salamanca, Chamberí y Chamartín, además de sus alrededores. Si tu vivienda está cerca, escríbenos igualmente.</p>
           </details>
           <details>
-            <summary>¿Tengo que firmar exclusiva?</summary>
-            <p>Te explicamos todas las opciones. La exclusiva nos permite invertir más en vender tu casa (fotos, campaña, portales), pero la decisión siempre es tuya.</p>
+            <summary data-i18n="faq5_q">¿Tengo que firmar exclusiva?</summary>
+            <p data-i18n="faq5_a">Te explicamos todas las opciones. La exclusiva nos permite invertir más en vender tu casa (fotos, campaña, portales), pero la decisión siempre es tuya.</p>
           </details>
         </div>
       </div>
@@ -285,11 +293,11 @@
     <!-- CTA FINAL -->
     <section class="cta-final" id="contacto">
       <div class="container cta-inner reveal">
-        <h2>Da el primer paso hoy. La valoración es <em>gratis</em>.</h2>
-        <p>En menos de 24 h sabrás cuánto vale tu casa en Madrid. Sin compromiso y sin coste.</p>
+        <h2 data-i18n="cta_title">Da el primer paso hoy. La valoración es <em>gratis</em>.</h2>
+        <p data-i18n="cta_p">En menos de 24 h sabrás cuánto vale tu casa en Madrid. Sin compromiso y sin coste.</p>
         <div class="cta-actions">
-          <a class="btn btn-primary btn-lg" href="#valoracion">Pedir valoración gratis</a>
-          <a class="btn btn-ghost btn-lg" data-wa-link href="#" rel="noopener">Hablar por WhatsApp</a>
+          <a class="btn btn-primary btn-lg" href="#valoracion" data-i18n="cta_btn1">Pedir valoración gratis</a>
+          <a class="btn btn-ghost btn-lg" data-wa-link href="#" rel="noopener" data-i18n="cta_btn2">Hablar por WhatsApp</a>
         </div>
       </div>
     </section>
@@ -299,28 +307,28 @@
     <div class="container footer-grid">
       <div>
         <img class="footer-logo" src="assets/logos/inmoia-logo-premium-light.svg" alt="InmoIA" width="150" height="42" />
-        <p class="footer-tag">Inmobiliaria digital en la zona prime de Madrid. Valoramos tu casa con inteligencia artificial.</p>
+        <p class="footer-tag" data-i18n="foot_tag">Inmobiliaria digital en la zona prime de Madrid. Valoramos tu casa con inteligencia artificial.</p>
       </div>
       <div class="footer-col">
-        <h4>Contacto</h4>
+        <h4 data-i18n="foot_contacto">Contacto</h4>
         <p><a data-wa-link href="#" rel="noopener">WhatsApp</a></p>
         <p><a href="mailto:hola@inmoia.pro">hola@inmoia.pro</a></p>
-        <p>Madrid · Salamanca, Chamberí, Chamartín</p>
+        <p data-i18n="foot_madrid">Madrid · Salamanca, Chamberí, Chamartín</p>
       </div>
       <div class="footer-col">
-        <h4>Enlaces</h4>
-        <p><a href="#como-funciona">Cómo funciona</a></p>
-        <p><a href="#zonas">Zonas</a></p>
-        <p><a href="#faq">Preguntas frecuentes</a></p>
-        <p><a href="#valoracion">Valoración gratis</a></p>
+        <h4 data-i18n="foot_enlaces">Enlaces</h4>
+        <p><a href="#como-funciona" data-i18n="foot_l1">Cómo funciona</a></p>
+        <p><a href="#zonas" data-i18n="foot_l2">Zonas</a></p>
+        <p><a href="#faq" data-i18n="foot_l3">Preguntas frecuentes</a></p>
+        <p><a href="#valoracion" data-i18n="foot_l4">Valoración gratis</a></p>
       </div>
     </div>
     <div class="container footer-bottom">
       <p>© <span data-year>2026</span> InmoIA · Madrid</p>
       <p class="footer-legal">
-        <a href="aviso-legal.html">Aviso legal</a> ·
-        <a href="privacidad.html">Política de privacidad</a> ·
-        <a href="creditos.html">Créditos fotográficos →</a>
+        <a href="aviso-legal.html" data-i18n="foot_legal1">Aviso legal</a> ·
+        <a href="privacidad.html" data-i18n="foot_legal2">Política de privacidad</a> ·
+        <a href="creditos.html" data-i18n="foot_legal3">Créditos fotográficos →</a>
       </p>
     </div>
   </footer>
@@ -330,6 +338,7 @@
     <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18.8 5 16.9 5 15 5 9 9.9 4.1 16 4.1S27 9 27 15 22.1 24.8 16 24.8zm6-7.6c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg>
   </a>
 
+  <script defer src="i18n.js?v=20260621"></script>
   <script defer src="main.js?v=20260620"></script>
 </body>
 </html>
