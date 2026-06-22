@@ -58,10 +58,16 @@
       </nav>
 
       <div class="header-right">
-        <div class="lang-switch" role="group" aria-label="Idioma / Language">
-          <button type="button" class="lang-btn is-active" data-lang="es" aria-label="Español"><img src="assets/flags/es.svg" alt="ES" width="22" height="15" /></button>
-          <button type="button" class="lang-btn" data-lang="en" aria-label="English"><img src="assets/flags/en.svg" alt="EN" width="22" height="15" /></button>
-          <button type="button" class="lang-btn" data-lang="zh" aria-label="中文"><img src="assets/flags/zh.svg" alt="ZH" width="22" height="15" /></button>
+        <div class="lang-switch" data-lang-switch role="group" aria-label="Idioma / Language">
+          <button type="button" class="lang-toggle" data-lang-toggle aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+            <img class="lang-flag" data-lang-current src="assets/flags/es.svg" alt="ES" width="22" height="15" />
+            <span class="lang-caret" aria-hidden="true"></span>
+          </button>
+          <div class="lang-menu" role="menu">
+            <button type="button" class="lang-btn is-active" data-lang="es" aria-label="Español"><img src="assets/flags/es.svg" alt="ES" width="22" height="15" /></button>
+            <button type="button" class="lang-btn" data-lang="en" aria-label="English"><img src="assets/flags/en.svg" alt="EN" width="22" height="15" /></button>
+            <button type="button" class="lang-btn" data-lang="zh" aria-label="中文"><img src="assets/flags/zh.svg" alt="ZH" width="22" height="15" /></button>
+          </div>
         </div>
         <a class="btn btn-primary header-cta" href="#valoracion" data-i18n="cta_header">Valoración gratis</a>
         <button class="nav-toggle" data-nav-toggle aria-label="Abrir menú" aria-expanded="false">

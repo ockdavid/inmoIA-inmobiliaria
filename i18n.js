@@ -196,6 +196,8 @@
       b.classList.toggle("is-active", b.getAttribute("data-lang") === lang);
       b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
     });
+    var cur = document.querySelector("[data-lang-current]");
+    if (cur) { cur.setAttribute("src", "assets/flags/" + lang + ".svg"); cur.setAttribute("alt", lang.toUpperCase()); }
     if (dict._title) document.title = dict._title;
     try { localStorage.setItem("inmoia_lang", lang); } catch (e) {}
   }
@@ -204,11 +206,34 @@
     var saved;
     try { saved = localStorage.getItem("inmoia_lang"); } catch (e) {}
     apply(saved || "es");
+
+    var sw = document.querySelector("[data-lang-switch]");
+    var toggle = document.querySelector("[data-lang-toggle]");
+    function closeMenu() {
+      if (!sw) return;
+      sw.classList.remove("is-open");
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+    }
+    if (toggle && sw) {
+      toggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = sw.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+
     document.addEventListener("click", function (e) {
       var b = e.target.closest("[data-lang]");
-      if (!b) return;
-      e.preventDefault();
-      apply(b.getAttribute("data-lang"));
+      if (b) {
+        e.preventDefault();
+        apply(b.getAttribute("data-lang"));
+        closeMenu();
+        return;
+      }
+      if (sw && !e.target.closest("[data-lang-switch]")) closeMenu();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
     });
   }
 
