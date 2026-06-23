@@ -57,11 +57,12 @@
 .calc-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(1.2rem, 3vw, 2.2rem); margin-top: 1.6rem; align-items: start; }
 .calc-fields { display: flex; flex-direction: column; gap: .9rem; }
 .calc-fields label { display: flex; flex-direction: column; gap: .35rem; font-family: var(--font-body); font-weight: 600; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
-.calc-fields input {
+.calc-fields input, .calc-fields select {
   font-family: var(--font-body); font-size: 1rem; color: var(--ink);
   padding: .72rem .9rem; border: 1px solid var(--line-2); border-radius: 6px; background: #fff; width: 100%;
 }
-.calc-fields input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.calc-fields select { line-height: 1.5; cursor: pointer; appearance: auto; }
+.calc-fields input:focus, .calc-fields select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .calc-two { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
 .calc-hint { font-family: var(--font-body); font-size: .8rem; color: var(--ink-mute); margin-top: .2rem; }
 

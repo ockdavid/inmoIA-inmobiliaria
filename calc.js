@@ -1,18 +1,16 @@
 /* =========================================================================
    InmoIA — Calculadora de capacidad de compra (regla del 35%).
    Orientativa. Sin dependencias, sin código inline (compatible con la CSP).
-   Inputs: ingresos netos, deudas, ahorro, tipo de interés, plazo.
+   Inputs: nómina/ingresos netos, % de financiación, tipo fijo y plazo.
    Salidas: cuota máxima, hipoteca máxima y precio máximo de vivienda.
    ========================================================================= */
 (function () {
   "use strict";
 
-  var GASTOS = 0.10;   // gastos de compra estimados (~10% del precio)
-  var LTV_DEF = 0.80;  // financiación por defecto si no se indica (80% del precio)
-  var ESFUERZO = 0.35; // regla del 35% sobre ingresos netos
+  var ESFUERZO = 0.35; // regla del 35% sobre la nómina/ingresos netos
+  var LTV_DEF = 0.80;  // financiación por defecto si no se indica
 
   var eur = new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
-  var pct = new Intl.NumberFormat("es-ES", { style: "percent", maximumFractionDigits: 0 });
 
   function el(id) { return document.getElementById(id); }
   function num(id) {
@@ -24,51 +22,36 @@
     if (!el("calc-price")) return;
 
     var income = num("calc-income");
-    var debts = num("calc-debts");
-    var savings = num("calc-savings");
     var rate = num("calc-rate");
     var term = num("calc-term") || 30;
 
-    // Porcentaje de financiación del banco (LTV). Por defecto 80%, máx 100%.
+    // Porcentaje de financiación del banco (LTV). Selector 70/80/90/100.
     var ltvPct = num("calc-financing");
     var LTV = ltvPct > 0 ? Math.min(ltvPct, 100) / 100 : LTV_DEF;
 
-    // Cuota máxima recomendada: 35% de ingresos menos deudas ya existentes.
-    var payment = Math.max(0, income * ESFUERZO - debts);
+    // Cuota máxima recomendada: 35% de la nómina (ratio de endeudamiento).
+    var payment = income * ESFUERZO;
 
     // Capital máximo de hipoteca (amortización francesa, interés fijo).
     var i = rate / 100 / 12;
     var n = term * 12;
     var loan = i > 0 ? payment * (1 - Math.pow(1 + i, -n)) / i : payment * n;
 
-    // Precio máximo de vivienda.
-    var price;
-    if (savings > 0) {
-      // Limitado por (a) financiación + ahorro y (b) ahorro suficiente para entrada + gastos.
-      var pByFinance = (savings + loan) / (1 + GASTOS);
-      var pBySavings = savings / (1 - LTV + GASTOS); // entrada (1 - LTV) + gastos
-      price = Math.min(pByFinance, pBySavings);
-      loan = Math.min(loan, LTV * price); // el banco no presta más del LTV indicado
-    } else {
-      price = LTV > 0 ? loan / LTV : loan;
-    }
+    // Precio máximo de vivienda: la hipoteca cubre el % financiado del precio.
+    var price = LTV > 0 ? loan / LTV : loan;
 
     el("calc-payment").textContent = eur.format(payment);
     el("calc-loan").textContent = eur.format(loan);
     el("calc-price").textContent = eur.format(price);
-
-    var effortVal = el("calc-effort-val");
-    if (effortVal) effortVal.textContent = income > 0 ? pct.format(payment / income) : "—";
-
-    var warn = el("calc-warn");
-    if (warn) warn.hidden = payment > 0;
   }
 
   function init() {
     if (!el("calc-hipoteca")) return;
-    ["calc-income", "calc-debts", "calc-savings", "calc-financing", "calc-rate", "calc-term"].forEach(function (id) {
-      var input = el(id);
-      if (input) input.addEventListener("input", calc);
+    ["calc-income", "calc-financing", "calc-rate", "calc-term"].forEach(function (id) {
+      var field = el(id);
+      if (!field) return;
+      field.addEventListener("input", calc);
+      field.addEventListener("change", calc);
     });
     calc();
   }
