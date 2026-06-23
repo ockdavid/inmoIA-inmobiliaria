@@ -7,8 +7,8 @@
 (function () {
   "use strict";
 
-  var GASTOS = 0.10; // gastos de compra estimados (~10% del precio)
-  var LTV = 0.80;    // financiación máxima habitual del banco (80% del precio)
+  var GASTOS = 0.10;   // gastos de compra estimados (~10% del precio)
+  var LTV_DEF = 0.80;  // financiación por defecto si no se indica (80% del precio)
   var ESFUERZO = 0.35; // regla del 35% sobre ingresos netos
 
   var eur = new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
@@ -29,10 +29,14 @@
     var rate = num("calc-rate");
     var term = num("calc-term") || 30;
 
+    // Porcentaje de financiación del banco (LTV). Por defecto 80%, máx 100%.
+    var ltvPct = num("calc-financing");
+    var LTV = ltvPct > 0 ? Math.min(ltvPct, 100) / 100 : LTV_DEF;
+
     // Cuota máxima recomendada: 35% de ingresos menos deudas ya existentes.
     var payment = Math.max(0, income * ESFUERZO - debts);
 
-    // Capital máximo de hipoteca (amortización francesa).
+    // Capital máximo de hipoteca (amortización francesa, interés fijo).
     var i = rate / 100 / 12;
     var n = term * 12;
     var loan = i > 0 ? payment * (1 - Math.pow(1 + i, -n)) / i : payment * n;
@@ -42,11 +46,11 @@
     if (savings > 0) {
       // Limitado por (a) financiación + ahorro y (b) ahorro suficiente para entrada + gastos.
       var pByFinance = (savings + loan) / (1 + GASTOS);
-      var pBySavings = savings / (1 - LTV + GASTOS); // entrada (20%) + gastos
+      var pBySavings = savings / (1 - LTV + GASTOS); // entrada (1 - LTV) + gastos
       price = Math.min(pByFinance, pBySavings);
-      loan = Math.min(loan, LTV * price); // el banco no presta más del 80%
+      loan = Math.min(loan, LTV * price); // el banco no presta más del LTV indicado
     } else {
-      price = loan / LTV;
+      price = LTV > 0 ? loan / LTV : loan;
     }
 
     el("calc-payment").textContent = eur.format(payment);
@@ -62,7 +66,7 @@
 
   function init() {
     if (!el("calc-hipoteca")) return;
-    ["calc-income", "calc-debts", "calc-savings", "calc-rate", "calc-term"].forEach(function (id) {
+    ["calc-income", "calc-debts", "calc-savings", "calc-financing", "calc-rate", "calc-term"].forEach(function (id) {
       var input = el(id);
       if (input) input.addEventListener("input", calc);
     });
