@@ -71,6 +71,7 @@
       calc_rate_hint: "Cálculo con interés fijo durante todo el plazo, según la regla del 35 % sobre tu nómina.",
       calc_out_price: "Precio máximo de vivienda", calc_out_loan: "Hipoteca máxima", calc_out_payment: "Cuota máxima recomendada",
       calc_disclaimer: "Cálculo orientativo con interés fijo, no es una oferta de financiación. El precio supone que aportas la entrada (el % no financiado); los gastos de compra (~10 %) van aparte. Las condiciones reales dependen de cada banco y de tu perfil.",
+      calc_link: "Calcula tu capacidad de compra", calc_back: "← Volver al inicio",
       cta_title: "Da el primer paso hoy. La valoración es <em>gratis</em>.",
       cta_p: "En menos de 24 h sabrás cuánto vale tu casa en Madrid. Sin compromiso y sin coste.",
       cta_btn1: "Pedir valoración gratis", cta_btn2: "Hablar por WhatsApp",
@@ -143,6 +144,7 @@
       calc_rate_hint: "Calculated with a fixed rate for the whole term, using the 35% rule on your salary.",
       calc_out_price: "Maximum property price", calc_out_loan: "Maximum mortgage", calc_out_payment: "Maximum recommended payment",
       calc_disclaimer: "Indicative estimate with a fixed rate, not a financing offer. The price assumes you provide the down payment (the non-financed part); purchase costs (~10%) are separate. Real terms depend on each bank and your profile.",
+      calc_link: "Calculate how much you can afford", calc_back: "← Back to home",
       cta_title: "Take the first step today. The valuation is <em>free</em>.",
       cta_p: "In under 24 h you'll know what your Madrid home is worth. No obligation and no cost.",
       cta_btn1: "Get my free valuation", cta_btn2: "Chat on WhatsApp",
@@ -215,6 +217,7 @@
       calc_rate_hint: "按整个期限的固定利率计算，依据工资的 35% 规则。",
       calc_out_price: "最高购房价格", calc_out_loan: "最高贷款额", calc_out_payment: "建议最高月供",
       calc_disclaimer: "按固定利率估算，仅供参考，并非融资报价。价格假设您支付首付（未融资部分）；购房费用（约 10%）另计。实际条件取决于各家银行和您的资质。",
+      calc_link: "测算您的购房能力", calc_back: "← 返回首页",
       cta_title: "今天就迈出第一步。估价<em>免费</em>。",
       cta_p: "不到24小时，您就能知道您在马德里的房子值多少钱。无义务、无费用。",
       cta_btn1: "获取免费估价", cta_btn2: "通过 WhatsApp 沟通",
@@ -243,7 +246,7 @@
     });
     var cur = document.querySelector("[data-lang-current]");
     if (cur) { cur.setAttribute("src", "assets/flags/" + lang + ".svg"); cur.setAttribute("alt", lang.toUpperCase()); }
-    if (dict._title) document.title = dict._title;
+    if (dict._title && !document.documentElement.hasAttribute("data-no-i18n-title")) document.title = dict._title;
     try { localStorage.setItem("inmoia_lang", lang); } catch (e) {}
   }
 

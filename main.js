@@ -25,7 +25,7 @@
       return hero ? hero.offsetHeight - header.offsetHeight - 40 : 200;
     };
     var apply = function () {
-      if (window.scrollY < trigger()) header.classList.add("at-hero");
+      if (hero && window.scrollY < trigger()) header.classList.add("at-hero");
       else header.classList.remove("at-hero");
     };
     apply();

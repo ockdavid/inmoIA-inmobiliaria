@@ -23,7 +23,7 @@
 
   <link rel="preload" as="image" href="assets/img/hero-interior.webp?v=2" fetchpriority="high" />
   <link rel="stylesheet" href="styles_v4.css?v=20260617" />
-  <link rel="stylesheet" href="styles_v5.css?v=20260623c" />
+  <link rel="stylesheet" href="styles_v5.css?v=20260623d" />
 
   <script type="application/ld+json">
   {
@@ -323,60 +323,11 @@
             <p data-i18n="fin_f3_p">Un solo expediente y acompañamiento hasta la firma en notaría. Tú decides siempre.</p>
           </article>
         </div>
-        <div class="calc reveal" id="calc-hipoteca">
-          <div class="calc-head">
-            <h3 data-i18n="calc_title">¿Hasta cuánto puedo comprar?</h3>
-            <p data-i18n="calc_sub">Estima tu capacidad de compra con la regla del 35%: tu cuota no debería superar el 35 % de tus ingresos, menos las deudas que ya pagas.</p>
-          </div>
-          <div class="calc-grid">
-            <div class="calc-fields">
-              <div class="calc-two">
-                <label>
-                  <span data-i18n="calc_in_income">Nómina / ingresos netos (€/mes)</span>
-                  <input type="number" id="calc-income" inputmode="numeric" min="0" step="100" value="2500" />
-                </label>
-                <label>
-                  <span data-i18n="calc_in_financing">Financiación del banco (%)</span>
-                  <select id="calc-financing">
-                    <option value="70">70 %</option>
-                    <option value="80" selected>80 %</option>
-                    <option value="90">90 %</option>
-                    <option value="100">100 %</option>
-                  </select>
-                </label>
-              </div>
-              <div class="calc-two">
-                <label>
-                  <span data-i18n="calc_in_rate">Tipo de interés fijo anual (%)</span>
-                  <input type="number" id="calc-rate" inputmode="decimal" min="0" max="20" step="0.1" value="3.5" />
-                </label>
-                <label>
-                  <span data-i18n="calc_in_term">Plazo (años)</span>
-                  <input type="number" id="calc-term" inputmode="numeric" min="5" max="40" step="1" value="30" />
-                </label>
-              </div>
-              <p class="calc-hint" data-i18n="calc_rate_hint">Cálculo con interés fijo durante todo el plazo, según la regla del 35 % sobre tu nómina.</p>
-            </div>
-            <div class="calc-results" aria-live="polite">
-              <div class="calc-result calc-result--main">
-                <span class="calc-label" data-i18n="calc_out_price">Precio máximo de vivienda</span>
-                <strong id="calc-price">—</strong>
-              </div>
-              <div class="calc-result">
-                <span class="calc-label" data-i18n="calc_out_loan">Hipoteca máxima</span>
-                <strong id="calc-loan">—</strong>
-              </div>
-              <div class="calc-result">
-                <span class="calc-label" data-i18n="calc_out_payment">Cuota máxima recomendada</span>
-                <strong id="calc-payment">—</strong>
-              </div>
-            </div>
-          </div>
-          <p class="form-foot calc-disclaimer" data-i18n="calc_disclaimer">Cálculo orientativo, no es una oferta de financiación. Asume financiación de hasta el 80 % del precio y gastos de compra de ~10 %. Las condiciones reales dependen de cada banco y de tu perfil.</p>
-        </div>
-
         <div class="cta-actions">
-          <a class="btn btn-primary" data-wa-link data-wa-text="Hola InmoIA 👋 Voy a comprar vivienda en Madrid y me gustaría que me pongáis en contacto con un broker hipotecario." href="#" rel="noopener" data-i18n="fin_btn">Pregúntanos por la financiación</a>
+          <a class="btn btn-primary" href="calculadora.html" data-i18n="calc_link">Calcula tu capacidad de compra</a>
+          <a class="btn btn-whatsapp" data-wa-link data-wa-text="Hola InmoIA 👋 Voy a comprar vivienda en Madrid y me gustaría que me pongáis en contacto con un broker hipotecario." href="#" rel="noopener">
+            <svg class="wa-ico" viewBox="0 0 32 32" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18.8 5 16.9 5 15 5 9 9.9 4.1 16 4.1S27 9 27 15 22.1 24.8 16 24.8zm6-7.6c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg> <span data-i18n="fin_btn">Pregúntanos por la financiación</span>
+          </a>
         </div>
         <p class="form-foot reveal fin-note" data-i18n="fin_note">InmoIA no es intermediario de crédito: te ponemos en contacto con brokers colaboradores de confianza. Las condiciones finales dependen de cada entidad y de tu perfil.</p>
       </div>
@@ -431,8 +382,7 @@
     <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18.8 5 16.9 5 15 5 9 9.9 4.1 16 4.1S27 9 27 15 22.1 24.8 16 24.8zm6-7.6c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg>
   </a>
 
-  <script defer src="i18n.js?v=20260623d"></script>
-  <script defer src="main.js?v=20260623"></script>
-  <script defer src="calc.js?v=20260623d"></script>
+  <script defer src="i18n.js?v=20260623e"></script>
+  <script defer src="main.js?v=20260623e"></script>
 </body>
 </html>

@@ -81,6 +81,16 @@
 @media (max-width: 760px) {
   .calc-grid { grid-template-columns: 1fr; }
 }
+@media (max-width: 520px) {
+  .calc-two { grid-template-columns: 1fr; }
+}
+
+/* ---------- Página dedicada de la calculadora ---------- */
+.calc-page { padding-top: calc(var(--header-h) + 3rem); }
+.calc-page .calc { max-width: 940px; }
+.calc-back { margin-top: 1.6rem; }
+.calc-back a { font-family: var(--font-body); font-weight: 600; color: var(--accent-deep); }
+.calc-back a:hover { text-decoration: underline; }
 
 /* ---------- Selector de idioma (desplegable) ---------- */
 .header-right { display: flex; align-items: center; gap: .8rem; }

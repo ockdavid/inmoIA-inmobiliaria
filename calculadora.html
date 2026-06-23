@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es" data-no-i18n-title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculadora de capacidad de compra · InmoIA</title>
+  <meta name="description" content="Calcula con la regla del 35% hasta qué precio de vivienda puedes comprar en Madrid según tu nómina, el plazo y el porcentaje de financiación. Orientativo y gratis." />
+  <meta name="theme-color" content="#181818" />
+  <link rel="canonical" href="https://www.inmoia.pro/calculadora.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Calculadora de capacidad de compra · InmoIA" />
+  <meta property="og:description" content="¿Hasta cuánto puedo comprar? Estima tu capacidad de compra con la regla del 35%." />
+  <meta property="og:locale" content="es_ES" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logos/inmoia-icon.svg?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles_v4.css?v=20260617" />
+  <link rel="stylesheet" href="styles_v5.css?v=20260623d" />
+</head>
+<body>
+  <a class="skip-link" href="#calc-hipoteca" data-i18n="skip">Saltar al formulario de valoración</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="InmoIA — inicio">
+        <img class="brand-logo brand-logo--dark" src="assets/logos/inmoia-logo-casita-dark.svg?v=2" alt="InmoIA" width="186" height="50" />
+        <img class="brand-logo brand-logo--light" src="assets/logos/inmoia-logo-casita-light.svg?v=2" alt="InmoIA" width="186" height="50" />
+      </a>
+
+      <nav class="nav" data-nav aria-label="Navegación principal">
+        <a href="index.html#como-funciona" data-i18n="nav_como">Cómo funciona</a>
+        <a href="index.html#por-que" data-i18n="nav_porque">Por qué InmoIA</a>
+        <a href="index.html#zonas" data-i18n="nav_zonas">Zonas</a>
+        <a href="index.html#financiacion" data-i18n="nav_financiacion">Financiación</a>
+        <a href="index.html#faq" data-i18n="nav_faq">Preguntas</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-switch" data-lang-switch role="group" aria-label="Idioma / Language">
+          <button type="button" class="lang-toggle" data-lang-toggle aria-haspopup="true" aria-expanded="false" aria-label="Cambiar idioma">
+            <img class="lang-flag" data-lang-current src="assets/flags/es.svg" alt="ES" width="22" height="15" />
+            <span class="lang-caret" aria-hidden="true"></span>
+          </button>
+          <div class="lang-menu" role="menu">
+            <button type="button" class="lang-btn is-active" data-lang="es" aria-label="Español"><img src="assets/flags/es.svg" alt="ES" width="22" height="15" /></button>
+            <button type="button" class="lang-btn" data-lang="en" aria-label="English"><img src="assets/flags/en.svg" alt="EN" width="22" height="15" /></button>
+            <button type="button" class="lang-btn" data-lang="zh" aria-label="中文"><img src="assets/flags/zh.svg" alt="ZH" width="22" height="15" /></button>
+          </div>
+        </div>
+        <a class="btn btn-primary header-cta" href="index.html#valoracion" data-i18n="cta_header">Valoración gratis</a>
+        <button class="nav-toggle" data-nav-toggle aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="section section--alt calc-page">
+      <div class="container">
+        <p class="eyebrow" data-i18n="fin_eyebrow">¿Vas a comprar?</p>
+        <h1 class="section-title" data-i18n="calc_title">¿Hasta cuánto puedo comprar?</h1>
+        <p class="section-lead" data-i18n="calc_sub">Estima tu capacidad de compra con la regla del 35%: tu cuota no debería superar el 35 % de tu nómina.</p>
+
+        <div class="calc" id="calc-hipoteca">
+          <div class="calc-grid">
+            <div class="calc-fields">
+              <div class="calc-two">
+                <label>
+                  <span data-i18n="calc_in_income">Nómina / ingresos netos (€/mes)</span>
+                  <input type="number" id="calc-income" inputmode="numeric" min="0" step="100" value="2500" />
+                </label>
+                <label>
+                  <span data-i18n="calc_in_financing">Financiación del banco (%)</span>
+                  <select id="calc-financing">
+                    <option value="70">70 %</option>
+                    <option value="80" selected>80 %</option>
+                    <option value="90">90 %</option>
+                    <option value="100">100 %</option>
+                  </select>
+                </label>
+              </div>
+              <div class="calc-two">
+                <label>
+                  <span data-i18n="calc_in_rate">Tipo de interés fijo anual (%)</span>
+                  <input type="number" id="calc-rate" inputmode="decimal" min="0" max="20" step="0.1" value="3.5" />
+                </label>
+                <label>
+                  <span data-i18n="calc_in_term">Plazo (años)</span>
+                  <input type="number" id="calc-term" inputmode="numeric" min="5" max="40" step="1" value="30" />
+                </label>
+              </div>
+              <p class="calc-hint" data-i18n="calc_rate_hint">Cálculo con interés fijo durante todo el plazo, según la regla del 35 % sobre tu nómina.</p>
+            </div>
+            <div class="calc-results" aria-live="polite">
+              <div class="calc-result calc-result--main">
+                <span class="calc-label" data-i18n="calc_out_price">Precio máximo de vivienda</span>
+                <strong id="calc-price">—</strong>
+              </div>
+              <div class="calc-result">
+                <span class="calc-label" data-i18n="calc_out_loan">Hipoteca máxima</span>
+                <strong id="calc-loan">—</strong>
+              </div>
+              <div class="calc-result">
+                <span class="calc-label" data-i18n="calc_out_payment">Cuota máxima recomendada</span>
+                <strong id="calc-payment">—</strong>
+              </div>
+            </div>
+          </div>
+          <p class="form-foot calc-disclaimer" data-i18n="calc_disclaimer">Cálculo orientativo con interés fijo, no es una oferta de financiación. El precio supone que aportas la entrada (el % no financiado); los gastos de compra (~10 %) van aparte. Las condiciones reales dependen de cada banco y de tu perfil.</p>
+        </div>
+
+        <div class="cta-actions">
+          <a class="btn btn-whatsapp" data-wa-link data-wa-text="Hola InmoIA 👋 Voy a comprar vivienda en Madrid y me gustaría que me pongáis en contacto con un broker hipotecario." href="#" rel="noopener">
+            <svg class="wa-ico" viewBox="0 0 32 32" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18.8 5 16.9 5 15 5 9 9.9 4.1 16 4.1S27 9 27 15 22.1 24.8 16 24.8zm6-7.6c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg> <span data-i18n="fin_btn">Pregúntanos por la financiación</span>
+          </a>
+        </div>
+
+        <p class="calc-back"><a href="index.html" data-i18n="calc_back">← Volver al inicio</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <img class="footer-logo" src="assets/logos/inmoia-logo-casita-light.svg?v=2" alt="InmoIA" width="150" height="40" />
+        <p class="footer-tag" data-i18n="foot_tag">Inmobiliaria digital en Madrid y su área metropolitana. Valoramos tu casa con inteligencia artificial.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot_contacto">Contacto</h4>
+        <p><a data-wa-link href="#" rel="noopener">WhatsApp</a></p>
+        <p><a href="mailto:hola@inmoia.pro">hola@inmoia.pro</a></p>
+        <p data-i18n="foot_madrid">Madrid · Salamanca, Chamberí, Chamartín</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="foot_enlaces">Enlaces</h4>
+        <p><a href="index.html#como-funciona" data-i18n="foot_l1">Cómo funciona</a></p>
+        <p><a href="index.html#zonas" data-i18n="foot_l2">Zonas</a></p>
+        <p><a href="index.html#financiacion" data-i18n="foot_l5">Financiación</a></p>
+        <p><a href="index.html#valoracion" data-i18n="foot_l4">Valoración gratis</a></p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span data-year>2026</span> InmoIA · Madrid</p>
+      <p class="footer-legal">
+        <a href="aviso-legal.html" data-i18n="foot_legal1">Aviso legal</a> ·
+        <a href="privacidad.html" data-i18n="foot_legal2">Política de privacidad</a> ·
+        <a href="creditos.html" data-i18n="foot_legal3">Créditos fotográficos →</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a class="wa-float" data-wa-link href="#" aria-label="Escríbenos por WhatsApp" rel="noopener">
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.6 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.3-.4C5.5 18.8 5 16.9 5 15 5 9 9.9 4.1 16 4.1S27 9 27 15 22.1 24.8 16 24.8zm6-7.6c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg>
+  </a>
+
+  <script defer src="i18n.js?v=20260623e"></script>
+  <script defer src="main.js?v=20260623e"></script>
+  <script defer src="calc.js?v=20260623d"></script>
+</body>
+</html>
