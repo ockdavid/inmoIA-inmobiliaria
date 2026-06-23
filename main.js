@@ -103,7 +103,7 @@
   /* ---- Enlaces de WhatsApp ---- */
   function initWhatsApp() {
     document.querySelectorAll("[data-wa-link]").forEach(function (a) {
-      if (!a.hasAttribute("data-lead-wa")) a.href = waURL();
+      if (!a.hasAttribute("data-lead-wa")) a.href = waURL(a.getAttribute("data-wa-text") || null);
       a.setAttribute("target", "_blank");
     });
   }

@@ -39,6 +39,10 @@
 .lead-form .check { font-size: .74rem; }
 .form-foot { margin-top: 0; }
 
+/* ---------- Bloque de financiación (compradores) ---------- */
+.fin-note { max-width: 60ch; margin: 1.4rem auto 0; }
+#financiacion .step-num { font-size: 1.4rem; }
+
 /* ---------- Selector de idioma (desplegable) ---------- */
 .header-right { display: flex; align-items: center; gap: .8rem; }
 .lang-switch { position: relative; }
