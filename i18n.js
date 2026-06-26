@@ -78,6 +78,7 @@
       foot_tag: "Inmobiliaria digital en Madrid y su área metropolitana. Valoramos tu casa con inteligencia artificial.",
       foot_contacto: "Contacto", foot_madrid: "Madrid · Salamanca, Chamberí, Chamartín",
       foot_enlaces: "Enlaces", foot_l1: "Cómo funciona", foot_l2: "Zonas", foot_l3: "Preguntas frecuentes", foot_l4: "Valoración gratis", foot_l5: "Financiación",
+      foot_redes: "Síguenos",
       foot_legal1: "Aviso legal", foot_legal2: "Política de privacidad", foot_legal3: "Créditos fotográficos →"
     },
 
@@ -151,6 +152,7 @@
       foot_tag: "Digital estate agency in Madrid and its metro area. We value your home with artificial intelligence.",
       foot_contacto: "Contact", foot_madrid: "Madrid · Salamanca, Chamberí, Chamartín",
       foot_enlaces: "Links", foot_l1: "How it works", foot_l2: "Areas", foot_l3: "FAQ", foot_l4: "Free valuation", foot_l5: "Financing",
+      foot_redes: "Follow us",
       foot_legal1: "Legal notice", foot_legal2: "Privacy policy", foot_legal3: "Photo credits →"
     },
 
@@ -224,6 +226,7 @@
       foot_tag: "马德里及大都市区的数字房产中介。我们用人工智能为您的房子估价。",
       foot_contacto: "联系", foot_madrid: "马德里 · Salamanca、Chamberí、Chamartín",
       foot_enlaces: "链接", foot_l1: "如何运作", foot_l2: "区域", foot_l3: "常见问题", foot_l4: "免费估价", foot_l5: "融资",
+      foot_redes: "关注我们",
       foot_legal1: "法律声明", foot_legal2: "隐私政策", foot_legal3: "图片来源 →"
     }
   };
