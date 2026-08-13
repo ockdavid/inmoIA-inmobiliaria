@@ -54,9 +54,16 @@ para no perder ningún lead.
    de "Redirección a HTTPS".
 
 ## Tras cada cambio (importante)
-El `.htaccess` ya evita versiones cacheadas. Aun así, si cambias `styles.css` o
-`main.js`, sube el número de versión `?v=20260617` (en `index.html`) a la fecha
-del día. Así el navegador siempre coge la versión nueva.
+El `.htaccess` ya evita versiones cacheadas. Aun así, si cambias `styles.css`,
+`i18n.js` o `main.js`, sube el `?v=AAAAMMDD` de ese archivo a la fecha del día.
+Así el navegador siempre coge la versión nueva.
+
+**Ojo: hay que cambiarlo en todos los HTML que carguen ese archivo**, no solo en
+`index.html`. `styles.css` lo usan los cinco (`index`, `calculadora`, `creditos`,
+`privacidad`, `aviso-legal`); `i18n.js` y `main.js` los usan `index` y `calculadora`.
+Si te dejas uno, esa página servirá una versión vieja y se verá rota.
+
+Última actualización: `?v=20260814` en `styles.css`, `i18n.js` y `main.js`.
 
 ## No publicar
 Las carpetas `assets/photos/source/` (originales) y `tools/` (archivos de
