@@ -100,6 +100,91 @@
     }, 6000);
   }
 
+  /* ---- Rotador de opiniones (Trustpilot) ----
+     Hay 5 reseñas reales en el DOM y se muestran solo las que caben en el
+     grid (3 / 2 / 1 según viewport). Cada 7 s la ventana avanza una posición,
+     así que con el tiempo se ven todas. Se pausa al pasar el ratón o al
+     enfocar con teclado, y los puntos permiten navegar a mano. */
+  function initTestimonials() {
+    var track = document.querySelector("[data-testi-track]");
+    if (!track) return;
+    var cards = Array.prototype.slice.call(track.querySelectorAll("[data-testi]"));
+    var dotsBox = document.querySelector("[data-testi-dots]");
+    if (cards.length < 2) return;
+
+    var start = 0, timer = null, paused = false;
+    var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var DELAY = 7000, FADE = 450;
+
+    /* Cuántas caben: lo decide el CSS, así no duplicamos breakpoints aquí */
+    function perView() {
+      var cols = getComputedStyle(track).gridTemplateColumns.split(" ").filter(Boolean).length;
+      return Math.max(1, Math.min(cols || 1, cards.length));
+    }
+
+    function render() {
+      var n = perView();
+      var visible = {};
+      for (var k = 0; k < n; k++) visible[(start + k) % cards.length] = true;
+      cards.forEach(function (c, i) { c.hidden = !visible[i]; });
+      if (dotsBox) {
+        Array.prototype.forEach.call(dotsBox.children, function (b, i) {
+          var on = i === start;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-current", on ? "true" : "false");
+        });
+      }
+    }
+
+    function goTo(i) {
+      if (i === start) return;
+      start = ((i % cards.length) + cards.length) % cards.length;
+      if (reduce) { render(); return; }
+      track.classList.add("is-fading");
+      setTimeout(function () {
+        render();
+        track.classList.remove("is-fading");
+      }, FADE);
+    }
+
+    function play() {
+      stop();
+      timer = setInterval(function () { if (!paused) goTo(start + 1); }, DELAY);
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    if (dotsBox) {
+      cards.forEach(function (_, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", "Ver opinión " + (i + 1) + " de " + cards.length);
+        b.addEventListener("click", function () { goTo(i); play(); });
+        dotsBox.appendChild(b);
+      });
+    }
+
+    /* Pausa mientras se lee o se navega con teclado */
+    var wrap = track.closest(".testi-rotator") || track;
+    ["mouseenter", "focusin"].forEach(function (ev) {
+      wrap.addEventListener(ev, function () { paused = true; });
+    });
+    ["mouseleave", "focusout"].forEach(function (ev) {
+      wrap.addEventListener(ev, function () { paused = false; });
+    });
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) stop(); else play();
+    });
+
+    var resizeT;
+    window.addEventListener("resize", function () {
+      clearTimeout(resizeT);
+      resizeT = setTimeout(render, 150);
+    }, { passive: true });
+
+    render();
+    play();
+  }
+
   /* ---- Enlaces de WhatsApp ---- */
   function initWhatsApp() {
     document.querySelectorAll("[data-wa-link]").forEach(function (a) {
@@ -177,6 +262,7 @@
     safe(initSmoothScroll, "initSmoothScroll");
     safe(initReveals, "initReveals");
     safe(initHeroSlideshow, "initHeroSlideshow");
+    safe(initTestimonials, "initTestimonials");
     safe(initWhatsApp, "initWhatsApp");
     safe(initLeadForm, "initLeadForm");
     safe(initLegal, "initLegal");

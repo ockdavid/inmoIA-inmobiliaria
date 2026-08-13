@@ -244,27 +244,61 @@
       </div>
     </section>
 
-    <!-- OPINIONES -->
+    <!-- ============================================================
+         OPINIONES — reseñas REALES de Trustpilot (perfil inmoia.pro)
+
+         ⚠️ NO inventes ni edites el contenido de estas opiniones.
+         Los textos son literales de Trustpilot (typos incluidos) y
+         cada tarjeta enlaza al perfil público para que se puedan
+         verificar. Publicar reseñas ficticias es infracción de la Ley
+         de Competencia Desleal (RDL 24/2021, Directiva Ómnibus).
+
+         Rotador: main.js → initTestimonials(). Muestra 3 tarjetas en
+         escritorio (2 en tablet, 1 en móvil) y va rotando entre las 5.
+         Para añadir una reseña nueva: duplica un <figure class="testi">
+         con data-testi y añade testiN_q / testiN_c en i18n.js (es/en/zh).
+         Si alguna no fuese de 5 estrellas, ajusta ★ y el aria-label.
+    -->
     <section class="section section--alt" id="opiniones">
       <div class="container">
         <p class="eyebrow" data-i18n="op_eyebrow">Opiniones</p>
-        <h2 class="section-title reveal" data-i18n="op_title">Propietarios que ya han vendido con nosotros.</h2>
-        <div class="testi-grid">
-          <figure class="testi reveal">
-            <div class="stars" aria-label="5 sobre 5">★★★★★</div>
-            <blockquote data-i18n="testi1_q">«Me dieron un precio realista desde el primer día y la casa se vendió en cinco semanas. Cero sustos.»</blockquote>
-            <figcaption data-i18n="testi1_c">Marta R. · Vendió en Chamberí</figcaption>
-          </figure>
-          <figure class="testi reveal">
-            <div class="stars" aria-label="5 sobre 5">★★★★★</div>
-            <blockquote data-i18n="testi2_q">«La valoración con IA me cuadró con lo que pagué después. Trato cercano y todo muy claro.»</blockquote>
-            <figcaption data-i18n="testi2_c">Javier L. · Vendió en Salamanca</figcaption>
-          </figure>
-          <figure class="testi reveal">
-            <div class="stars" aria-label="5 sobre 5">★★★★★</div>
-            <blockquote data-i18n="testi3_q">«Solo cobran si venden, así que iban a por todas. Lo recomiendo a cualquier vecino del barrio.»</blockquote>
-            <figcaption data-i18n="testi3_c">Carmen y Luis · Vendieron en Chamartín</figcaption>
-          </figure>
+        <h2 class="section-title reveal" data-i18n="op_title">Lo que dicen quienes ya han confiado en nosotros.</h2>
+
+        <a class="tp-bar reveal" href="https://www.trustpilot.com/review/inmoia.pro" target="_blank" rel="noopener noreferrer">
+          <span class="tp-bar__stars" aria-hidden="true">★★★★★</span>
+          <span class="tp-bar__txt" data-i18n="op_tp_txt">Nuestras <strong>5 opiniones</strong> en Trustpilot son de 5 estrellas. TrustScore 4,1 sobre 5.</span>
+          <span class="tp-bar__cta" data-i18n="op_tp_cta">Verlas en Trustpilot</span>
+        </a>
+
+        <div class="testi-rotator reveal">
+          <div class="testi-grid" data-testi-track>
+            <figure class="testi" data-testi>
+              <div class="stars" aria-label="5 sobre 5">★★★★★</div>
+              <blockquote data-i18n="testi1_q">«Muy feliz con la gestión de David, estuvo atento todo el tiempo y con mucha disposición a responder nuestras dudas. Actualmente vivo en una habitación increíble, en una gran ubicación y con compañeros espectaculares. Gracias David por ayudarnos a encontrar el sitio ideal para vivir en Madrid.»</blockquote>
+              <figcaption data-i18n="testi1_c">Alejandra Moreno · Trustpilot, agosto 2026</figcaption>
+            </figure>
+            <figure class="testi" data-testi>
+              <div class="stars" aria-label="5 sobre 5">★★★★★</div>
+              <blockquote data-i18n="testi2_q">«Muy contento con la atención y el profesionalismo de David, me ayudo a conseguir una habitacion para mi primo que venía de Barcelona. Muy atento y profesional. Totalmente recomendable para los que estén buscando un buen alojamiento.»</blockquote>
+              <figcaption data-i18n="testi2_c">Sebastián Cardona · Trustpilot, agosto 2026</figcaption>
+            </figure>
+            <figure class="testi" data-testi>
+              <div class="stars" aria-label="5 sobre 5">★★★★★</div>
+              <blockquote data-i18n="testi3_q">«Una experiencia increíble, excelente casa y lugar, estoy contenta con mi nuevo hogar y mis compañeros.»</blockquote>
+              <figcaption data-i18n="testi3_c">María José Díaz Guao · Trustpilot, agosto 2026</figcaption>
+            </figure>
+            <figure class="testi" data-testi>
+              <div class="stars" aria-label="5 sobre 5">★★★★★</div>
+              <blockquote data-i18n="testi4_q">«David es un profesional confiable y desde el primer momento me ayudó con todas las dudas que tenía sobre el piso que alquilé.»</blockquote>
+              <figcaption data-i18n="testi4_c">Leonardo Alonso · Trustpilot, agosto 2026</figcaption>
+            </figure>
+            <figure class="testi" data-testi>
+              <div class="stars" aria-label="5 sobre 5">★★★★★</div>
+              <blockquote data-i18n="testi5_q">«Sin duda la mejor inmobiliaria, ahora vivo en un buen lugar y muy tranquilo, estoy muy a gusto.»</blockquote>
+              <figcaption data-i18n="testi5_c">Kami Luna · Trustpilot, agosto 2026</figcaption>
+            </figure>
+          </div>
+          <div class="testi-dots" data-testi-dots></div>
         </div>
       </div>
     </section>
