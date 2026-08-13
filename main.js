@@ -214,11 +214,13 @@
         if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Pedir valoración gratis"; }
       };
       var fallbackWhatsApp = function () {
+        var extra = (data.get("mensaje") || "").toString().trim();
         var msg = CONFIG.waBase +
           "\nNombre: " + (data.get("nombre") || "") +
-          "\nTeléfono: " + (data.get("telefono") || "") +
+          "\nTeléfono: " + (data.get("prefijo") || "") + " " + (data.get("telefono") || "") +
           "\nEmail: " + (data.get("email") || "") +
-          "\nZona: " + (data.get("zona") || "");
+          "\nZona: " + (data.get("zona") || "") +
+          (extra ? "\nMás datos: " + extra : "");
         window.open(waURL(msg), "_blank");
         done();
       };

@@ -111,10 +111,48 @@
               <span data-i18n="f_nombre">Nombre</span>
               <input type="text" name="nombre" autocomplete="name" required placeholder="Tu nombre" data-i18n-ph="ph_nombre" />
             </label>
-            <label>
-              <span data-i18n="f_telefono">Teléfono</span>
-              <input type="tel" name="telefono" autocomplete="tel" required placeholder="600 000 000" />
-            </label>
+            <!-- Teléfono: prefijo + número. Van en dos controles, así que la etiqueta
+                 se asocia con for/id (no vale el <label> envolvente del resto).
+                 El prefijo se envía como campo "prefijo" y main.js lo antepone al
+                 número en el mensaje de respaldo de WhatsApp. -->
+            <div class="field">
+              <label class="field-label" for="lf-telefono" data-i18n="f_telefono">Teléfono</label>
+              <div class="tel-group">
+                <select class="tel-prefix" name="prefijo" id="lf-prefijo" aria-label="Prefijo del país" data-i18n-al="f_prefijo">
+                  <option value="+34" selected>+34 España</option>
+                  <option value="+351">+351 Portugal</option>
+                  <option value="+33">+33 Francia</option>
+                  <option value="+39">+39 Italia</option>
+                  <option value="+49">+49 Alemania</option>
+                  <option value="+44">+44 R. Unido</option>
+                  <option value="+353">+353 Irlanda</option>
+                  <option value="+31">+31 P. Bajos</option>
+                  <option value="+32">+32 Bélgica</option>
+                  <option value="+41">+41 Suiza</option>
+                  <option value="+40">+40 Rumanía</option>
+                  <option value="+48">+48 Polonia</option>
+                  <option value="+380">+380 Ucrania</option>
+                  <option value="+7">+7 Rusia</option>
+                  <option value="+212">+212 Marruecos</option>
+                  <option value="+1">+1 EE.UU./Can.</option>
+                  <option value="+52">+52 México</option>
+                  <option value="+57">+57 Colombia</option>
+                  <option value="+58">+58 Venezuela</option>
+                  <option value="+51">+51 Perú</option>
+                  <option value="+593">+593 Ecuador</option>
+                  <option value="+54">+54 Argentina</option>
+                  <option value="+56">+56 Chile</option>
+                  <option value="+591">+591 Bolivia</option>
+                  <option value="+595">+595 Paraguay</option>
+                  <option value="+598">+598 Uruguay</option>
+                  <option value="+55">+55 Brasil</option>
+                  <option value="+86">+86 China</option>
+                  <option value="+91">+91 India</option>
+                  <option value="+92">+92 Pakistán</option>
+                </select>
+                <input type="tel" name="telefono" id="lf-telefono" autocomplete="tel" required placeholder="600 000 000" />
+              </div>
+            </div>
             <label>
               <span><span data-i18n="f_email">Email</span> <span class="opt" data-i18n="f_opcional">(opcional)</span></span>
               <input type="email" name="email" autocomplete="email" placeholder="tucorreo@email.com" data-i18n-ph="ph_email" />
@@ -122,6 +160,13 @@
             <label>
               <span data-i18n="f_zona">Zona o dirección de la vivienda</span>
               <input type="text" name="zona" required placeholder="Ej. calle Velázquez, Salamanca" data-i18n-ph="ph_zona" />
+            </label>
+            <!-- Campo libre: sirve para quien no viene a vender (compradores,
+                 alquiler, herencias...). Opcional a propósito: cada campo
+                 obligatorio de más baja la conversión del formulario. -->
+            <label>
+              <span><span data-i18n="f_mensaje">¿Algo más que debamos saber?</span> <span class="opt" data-i18n="f_opcional">(opcional)</span></span>
+              <input type="text" name="mensaje" placeholder="Ej. no quiero vender, busco comprar" data-i18n-ph="ph_mensaje" />
             </label>
             <label class="check">
               <input type="checkbox" name="privacidad" required />

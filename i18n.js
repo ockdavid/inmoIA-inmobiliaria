@@ -21,7 +21,9 @@
       form_title: "¿Cuánto vale tu casa? Hoy lo sabes.",
       f_nombre: "Nombre", f_telefono: "Teléfono", f_email: "Email", f_opcional: "(opcional)",
       f_zona: "Zona o dirección de la vivienda",
+      f_prefijo: "Prefijo del país", f_mensaje: "¿Algo más que debamos saber?",
       ph_nombre: "Tu nombre", ph_email: "tucorreo@email.com", ph_zona: "Ej. calle Velázquez, Salamanca",
+      ph_mensaje: "Ej. no quiero vender, busco comprar",
       check: 'He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.',
       btn_pedir: "Pedir valoración gratis", btn_whatsapp: "Prefiero hablar por WhatsApp",
       form_foot: "Gratis y sin compromiso · Respondemos en menos de 24 h.",
@@ -102,7 +104,9 @@
       form_title: "How much is your home worth? Find out today.",
       f_nombre: "Name", f_telefono: "Phone", f_email: "Email", f_opcional: "(optional)",
       f_zona: "Area or address of the property",
+      f_prefijo: "Country dialling code", f_mensaje: "Anything else we should know?",
       ph_nombre: "Your name", ph_email: "you@email.com", ph_zona: "E.g. Calle Velázquez, Salamanca",
+      ph_mensaje: "E.g. I'm not selling, I want to buy",
       check: 'I have read and accept the <a href="privacidad.html" target="_blank" rel="noopener">privacy policy</a>.',
       btn_pedir: "Get my free valuation", btn_whatsapp: "I'd rather chat on WhatsApp",
       form_foot: "Free and no obligation · We reply within 24 h.",
@@ -182,7 +186,9 @@
       form_title: "您的房子值多少钱？今天就知道。",
       f_nombre: "姓名", f_telefono: "电话", f_email: "邮箱", f_opcional: "（选填）",
       f_zona: "房产所在区域或地址",
+      f_prefijo: "国家区号", f_mensaje: "还有什么需要我们了解的吗？",
       ph_nombre: "您的姓名", ph_email: "you@email.com", ph_zona: "例如：Calle Velázquez, Salamanca",
+      ph_mensaje: "例如：我不卖房，我想买房",
       check: '我已阅读并接受<a href="privacidad.html" target="_blank" rel="noopener">隐私政策</a>。',
       btn_pedir: "获取免费估价", btn_whatsapp: "我更想通过 WhatsApp 沟通",
       form_foot: "免费且无义务 · 我们将在24小时内回复。",
@@ -261,6 +267,11 @@
     document.querySelectorAll("[data-i18n-ph]").forEach(function (el) {
       var k = el.getAttribute("data-i18n-ph");
       if (dict[k] != null) el.setAttribute("placeholder", dict[k]);
+    });
+    /* aria-label (controles sin etiqueta visible propia, p. ej. el prefijo del teléfono) */
+    document.querySelectorAll("[data-i18n-al]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n-al");
+      if (dict[k] != null) el.setAttribute("aria-label", dict[k]);
     });
     document.querySelectorAll("[data-lang]").forEach(function (b) {
       b.classList.toggle("is-active", b.getAttribute("data-lang") === lang);
